@@ -48,6 +48,15 @@ public class Person {
         }
     }
 
+    public static Person findById(int personId){
+        String query = "SELECT * FROM persons WHERE id=:id";
+        try(Connection connection = Database.sql2o.open()){
+            return connection.createQuery(query)
+                    .addParameter("id",personId)
+                    .executeAndFetchFirst(Person.class);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
