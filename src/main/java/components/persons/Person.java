@@ -1,5 +1,9 @@
 package components.persons;
 
+import components.data.Database;
+import org.sql2o.Connection;
+
+import java.util.List;
 import java.util.Objects;
 
 public class Person {
@@ -19,6 +23,24 @@ public class Person {
 
     public String getEmail(){
         return this.email;
+    }
+
+    public static List<Person> all(){
+        String query = "SELECT * FROM persons";
+        try(Connection connection = Database.sql2o.open()){
+            return connection.createQuery(query)
+                             .executeAndFetch(Person.class);
+        }
+    }
+
+    public void save(){
+        String query = "INSERT INTO persons(name,email) VALUES (:name,:email)";
+        try(Connection connection = Database.sql2o.open()){
+            connection.createQuery(query)
+                      .addParameter("name",this.name)
+                      .addParameter("email",this.email)
+                      .executeUpdate();
+        }
     }
 
     @Override

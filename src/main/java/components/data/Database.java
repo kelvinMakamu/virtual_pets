@@ -1,3 +1,5 @@
+package components.data;
+
 import org.sql2o.Sql2o;
 
 public class Database {

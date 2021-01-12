@@ -1,6 +1,6 @@
 package components.persons;
 
-
+import components.data.DatabaseRule;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -44,9 +44,19 @@ public class PersonTest {
         assertTrue(Person.all().get(0).equals(person));
     }
 
+    @Test
+    public void all_returnsPersonInstances_true(){
+        Person firstPerson  = setUpNewPerson();
+        firstPerson.save();
+        Person secondPerson  = new Person("Gerald","gerald@gerald.com");
+        secondPerson.save();
+        assertEquals(true,Person.all().get(0).equals(firstPerson));
+        assertEquals(true,Person.all().get(1).equals(secondPerson));
+    }
+
     // HELPERS
     public Person setUpNewPerson(){
-        return new Person("Henry","[email protected]");
+        return new Person("Henry","henry@henry.com");
     }
 
 }
