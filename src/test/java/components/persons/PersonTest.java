@@ -4,6 +4,7 @@ package components.persons;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class PersonTest {
 
@@ -23,6 +24,13 @@ public class PersonTest {
     public void getEmail_gettingEmailOfInstantiatedPerson_string(){
         Person person = setUpNewPerson();
         assertEquals("[email protected]",person.getEmail());
+    }
+
+    @Test
+    public void equals_comparesTwoPersonObjects_true(){
+        Person firstPerson  = setUpNewPerson();
+        Person secondPerson = setUpNewPerson();
+        assertTrue(firstPerson.equals(secondPerson));
     }
 
     // HELPERS
