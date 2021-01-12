@@ -14,7 +14,7 @@ public class PersonTest {
     }
 
     @Test
-    public void getName_GettingNameofInstantiatedPerson_string(){
+    public void getName_gettingNameOfInstantiatedPerson_string(){
         Person person = new Person("Henry","[email protected]");
         assertEquals("Henry",person.getName());
     }
