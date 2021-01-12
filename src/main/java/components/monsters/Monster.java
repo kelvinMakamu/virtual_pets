@@ -13,4 +13,8 @@ public class Monster {
     public String getName(){
         return this.name;
     }
+
+    public int getPersonId(){
+        return this.personId;
+    }
 }
