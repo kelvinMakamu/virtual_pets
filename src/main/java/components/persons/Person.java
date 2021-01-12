@@ -2,6 +2,13 @@ package components.persons;
 
 public class Person {
 
-    public Person(String henry, String s) {
+    private int id;
+    private String name;
+    private String email;
+
+    public Person(String name, String email) {
+        this.name  = name;
+        this.email = email;
     }
+
 }
