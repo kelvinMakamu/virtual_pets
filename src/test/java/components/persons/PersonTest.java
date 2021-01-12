@@ -33,6 +33,13 @@ public class PersonTest {
         assertTrue(firstPerson.equals(secondPerson));
     }
 
+    @Test
+    public void save_insertPersonObjectIntoDatabase(){
+        Person person  = setUpNewPerson();
+        person.save();
+        assertTrue(Person.all().get(0).equals(person));
+    }
+
     // HELPERS
     public Person setUpNewPerson(){
         return new Person("Henry","[email protected]");
