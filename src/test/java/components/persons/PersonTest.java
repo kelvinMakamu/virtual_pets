@@ -27,7 +27,7 @@ public class PersonTest {
     @Test
     public void getEmail_gettingEmailOfInstantiatedPerson_string(){
         Person person = setUpNewPerson();
-        assertEquals("[email protected]",person.getEmail());
+        assertEquals("henry@henry.com",person.getEmail());
     }
 
     @Test
@@ -42,6 +42,23 @@ public class PersonTest {
         Person person  = setUpNewPerson();
         person.save();
         assertTrue(Person.all().get(0).equals(person));
+    }
+
+    @Test
+    public void save_assignsIdToObject(){
+        Person person  = setUpNewPerson();
+        person.save();
+        Person savedPerson = Person.all().get(0);
+        assertEquals(person.getId(),savedPerson.getId());
+    }
+
+    @Test
+    public void findById_returnsPersonWithAnId_second(){
+        Person person        = setUpNewPerson();
+        person.save();
+        Person secondPerson  = new Person("Gerald","gerald@gerald.com");
+        secondPerson.save();
+        assertEquals(Person.findById(secondPerson.getId()),secondPerson);
     }
 
     @Test

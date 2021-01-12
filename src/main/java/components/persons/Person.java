@@ -25,6 +25,10 @@ public class Person {
         return this.email;
     }
 
+    public int getId(){
+        return this.id;
+    }
+
     public static List<Person> all(){
         String query = "SELECT * FROM persons";
         try(Connection connection = Database.sql2o.open()){
@@ -34,12 +38,13 @@ public class Person {
     }
 
     public void save(){
-        String query = "INSERT INTO persons(name,email) VALUES (:name,:email)";
+        String query = "INSERT INTO persons(name,email) VALUES(:name,:email)";
         try(Connection connection = Database.sql2o.open()){
-            connection.createQuery(query)
-                      .addParameter("name",this.name)
-                      .addParameter("email",this.email)
-                      .executeUpdate();
+            this.id = (int) connection.createQuery(query,true)
+                    .addParameter("name",this.name)
+                    .addParameter("email",this.email)
+                    .executeUpdate()
+                    .getKey();
         }
     }
 
