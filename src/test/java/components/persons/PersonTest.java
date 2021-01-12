@@ -19,5 +19,11 @@ public class PersonTest {
         assertEquals("Henry",person.getName());
     }
 
+    @Test
+    public void getEmail_gettingEmailOfInstantiatedPerson_string(){
+        Person person = new Person("Henry","[email protected]");
+        assertEquals("[email protected]",person.getEmail());
+    }
+
 
 }
