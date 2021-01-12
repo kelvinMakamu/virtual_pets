@@ -13,20 +13,31 @@ public class MonsterTest {
 
     @Test
     public void Monster_instantiatesCorrectly_true(){
-        Monster monster = new Monster("Cat",12);
+        Monster monster = setUpNewMonster();
         assertTrue(monster instanceof Monster);
     }
 
     @Test
     public void getName_instantiatesObjectWithAName_string(){
-        Monster monster = new Monster("Cat",12);
+        Monster monster = setUpNewMonster();
         assertEquals("Cat",monster.getName());
     }
 
     @Test
     public void getPersonId_instantiatesObjectWithAPersonId_integer(){
-        Monster monster = new Monster("Cat",12);
+        Monster monster = setUpNewMonster();
         assertEquals(12,monster.getPersonId());
+    }
+
+    @Test
+    public void equals_comparesTwoObjects_true(){
+        Monster firstMonster  = setUpNewMonster();
+        Monster secondMonster = setUpNewMonster();
+        assertTrue(firstMonster.equals(secondMonster));
+    }
+
+    public Monster setUpNewMonster(){
+        return new Monster("Cat",12);
     }
 
 
