@@ -9,4 +9,8 @@ public class Monster {
         this.name     = name;
         this.personId = personId;
     }
+
+    public String getName(){
+        return this.name;
+    }
 }
