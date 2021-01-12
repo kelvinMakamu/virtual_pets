@@ -15,4 +15,8 @@ public class Person {
         return this.name;
     }
 
+    public String getEmail(){
+        return this.email;
+    }
+
 }
