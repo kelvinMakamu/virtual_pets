@@ -16,4 +16,10 @@ public class MonsterTest {
         Monster monster = new Monster("Cat",12);
         assertTrue(monster instanceof Monster);
     }
+
+    @Test
+    public void getName_instantiatesObjectWithAName_string(){
+        Monster monster = new Monster("Cat",12);
+        assertEquals("Cat",monster.getName());
+    }
 }
