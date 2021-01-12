@@ -22,4 +22,12 @@ public class MonsterTest {
         Monster monster = new Monster("Cat",12);
         assertEquals("Cat",monster.getName());
     }
+
+    @Test
+    public void getPersonId_instantiatesObjectWithAPersonId_integer(){
+        Monster monster = new Monster("Cat",12);
+        assertEquals(12,monster.getPersonId());
+    }
+
+
 }
