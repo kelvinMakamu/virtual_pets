@@ -47,6 +47,15 @@ public class Monster {
         }
     }
 
+    public static Monster findById(int monsterId){
+        String query = "SELECT * FROM monsters WHERE id=:id";
+        try(Connection connection = Database.sql2o.open()){
+            return connection.createQuery(query)
+                    .addParameter("id",monsterId)
+                    .executeAndFetchFirst(Monster.class);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
