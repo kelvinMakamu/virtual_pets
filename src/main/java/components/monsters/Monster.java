@@ -24,6 +24,7 @@ public class Monster {
         this.name      = name;
         this.personId  = personId;
         this.playLevel = MAX_PLAY_LEVEL/2;
+        this.foodLevel = MAX_FOOD_LEVEL/2;
     }
 
     public int getId(){
@@ -40,6 +41,10 @@ public class Monster {
 
     public int getPlayLevel(){
         return this.playLevel;
+    }
+
+    public int getFoodLevel(){
+        return this.foodLevel;
     }
 
     public void save(){
