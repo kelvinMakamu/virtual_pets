@@ -5,7 +5,8 @@ import components.persons.Person;
 import org.junit.Rule;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MonsterTest {
 
@@ -69,6 +70,16 @@ public class MonsterTest {
         Monster secondMonster = new Monster("Spud", 1);
         secondMonster.save();
         assertEquals(Monster.findById(secondMonster.getId()),secondMonster);
+    }
+
+    @Test
+    public void save_savesPersonIdIntoDB_true(){
+        Person testPerson    = new Person("Henry","henry@henry.com");
+        testPerson.save();
+        Monster testMonster  = new Monster("Catway", testPerson.getId());
+        testMonster.save();
+        Monster savedMonster = Monster.findById(testMonster.getId());
+        assertEquals(savedMonster.getPersonId(),testPerson.getId());
     }
 
     public Monster setUpNewMonster(){
