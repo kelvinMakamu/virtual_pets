@@ -106,6 +106,13 @@ public class MonsterTest {
         assertEquals(savedMonster.getPersonId(),testPerson.getId());
     }
 
+    @Test
+    public void play_increasesMonsterPlayLevel(){
+        Monster monster = setUpNewMonster();
+        monster.play();
+        assertTrue(monster.getPlayLevel() > (Monster.MAX_PLAY_LEVEL/2));
+    }
+
     public Monster setUpNewMonster(){
         return new Monster("Cat",12);
     }
