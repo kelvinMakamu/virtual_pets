@@ -26,6 +26,12 @@ public class MonsterTest {
     }
 
     @Test
+    public void Monster_instantiatesWithHalfFoodLevel(){
+        Monster monster = setUpNewMonster();
+        assertEquals(monster.getFoodLevel(),(Monster.MAX_FOOD_LEVEL/2));
+    }
+
+    @Test
     public void getName_instantiatesObjectWithAName_string(){
         Monster monster = setUpNewMonster();
         assertEquals("Cat",monster.getName());
