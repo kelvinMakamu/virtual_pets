@@ -1,6 +1,7 @@
 package components.monsters;
 
 import components.data.DatabaseRule;
+import components.persons.Person;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -59,6 +60,15 @@ public class MonsterTest {
         secondMonster.save();
         assertEquals(true, Monster.all().get(0).equals(firstMonster));
         assertEquals(true, Monster.all().get(1).equals(secondMonster));
+    }
+
+    @Test
+    public void findById_returnsMonsterWithAnId_second(){
+        Monster firstMonster = setUpNewMonster();
+        firstMonster.save();
+        Monster secondMonster = new Monster("Spud", 1);
+        secondMonster.save();
+        assertEquals(Monster.findById(secondMonster.getId()),secondMonster);
     }
 
     public Monster setUpNewMonster(){
