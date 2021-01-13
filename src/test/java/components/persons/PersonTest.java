@@ -75,15 +75,15 @@ public class PersonTest {
     }
 
     @Test
-    public void getMonsters_returnsAllMonstersAssoaciatedToAPerson_monsterList(){
-        Person testPerson     = setUpNewPerson();
+    public void getMonsters_returnsAllMonstersAssociatedToAPerson_monsterList(){
+        Person testPerson     = new Person("Henry","henry@henry.com");
         testPerson.save();
         Monster firstMonster  = new Monster("Cat",testPerson.getId());
         firstMonster.save();
         Monster secondMonster = new Monster("Dog",testPerson.getId());
         secondMonster.save();
         Monster [] monsters   = new Monster[] {firstMonster,secondMonster};
-        assertTrue(Person.getMonsters().containsAll(Arrays.asList(monsters)));
+        assertTrue(testPerson.getMonsters().containsAll(Arrays.asList(monsters)));
     }
 
     // HELPERS

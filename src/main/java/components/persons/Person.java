@@ -1,6 +1,7 @@
 package components.persons;
 
 import components.data.Database;
+import components.monsters.Monster;
 import org.sql2o.Connection;
 
 import java.util.List;
@@ -54,6 +55,15 @@ public class Person {
             return connection.createQuery(query)
                     .addParameter("id",personId)
                     .executeAndFetchFirst(Person.class);
+        }
+    }
+
+    public List<Monster> getMonsters(){
+        String query = "SELECT * FROM monsters WHERE personId=:id";
+        try(Connection connection = Database.sql2o.open()){
+            return connection.createQuery(query)
+                    .addParameter("id",this.id)
+                    .executeAndFetch(Monster.class);
         }
     }
 
