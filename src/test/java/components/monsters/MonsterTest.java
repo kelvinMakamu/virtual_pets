@@ -40,7 +40,25 @@ public class MonsterTest {
     public void save_insertMonsterObjectIntoDatabase(){
         Monster firstMonster  = setUpNewMonster();
         firstMonster.save();
-        assertEquals(Monster.all().get(0).equals(firstMonster));
+        assertEquals(true,Monster.all().get(0).equals(firstMonster));
+    }
+
+    @Test
+    public void save_assignsIdToSavedObject(){
+        Monster firstMonster  = setUpNewMonster();
+        firstMonster.save();
+        Monster savedMonster  = Monster.all().get(0);
+        assertEquals(firstMonster.getId(),savedMonster.getId());
+    }
+
+    @Test
+    public void all_returnsAllInstancesOfMonster_true() {
+        Monster firstMonster = setUpNewMonster();
+        firstMonster.save();
+        Monster secondMonster = new Monster("Spud", 1);
+        secondMonster.save();
+        assertEquals(true, Monster.all().get(0).equals(firstMonster));
+        assertEquals(true, Monster.all().get(1).equals(secondMonster));
     }
 
     public Monster setUpNewMonster(){
