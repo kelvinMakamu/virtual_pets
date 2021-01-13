@@ -1,8 +1,11 @@
 package components.persons;
 
 import components.data.DatabaseRule;
+import components.monsters.Monster;
 import org.junit.Rule;
 import org.junit.Test;
+
+import java.util.Arrays;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -69,6 +72,18 @@ public class PersonTest {
         secondPerson.save();
         assertEquals(true,Person.all().get(0).equals(firstPerson));
         assertEquals(true,Person.all().get(1).equals(secondPerson));
+    }
+
+    @Test
+    public void getMonsters_returnsAllMonstersAssoaciatedToAPerson_monsterList(){
+        Person testPerson     = setUpNewPerson();
+        testPerson.save();
+        Monster firstMonster  = new Monster("Cat",testPerson.getId());
+        firstMonster.save();
+        Monster secondMonster = new Monster("Dog",testPerson.getId());
+        secondMonster.save();
+        Monster [] monsters   = new Monster[] {firstMonster,secondMonster};
+        assertTrue(Person.getMonsters().containsAll(Arrays.asList(monsters)));
     }
 
     // HELPERS
