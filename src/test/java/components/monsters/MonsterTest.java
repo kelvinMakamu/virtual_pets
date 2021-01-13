@@ -120,6 +120,13 @@ public class MonsterTest {
         assertTrue(monster.getSleepLevel() > (Monster.MAX_SLEEP_LEVEL/2));
     }
 
+    @Test
+    public void feed_increasesMonsterFoodLevel(){
+        Monster monster = setUpNewMonster();
+        monster.feed();
+        assertTrue(monster.getFoodLevel() > (Monster.MAX_FOOD_LEVEL/2));
+    }
+
     public Monster setUpNewMonster(){
         return new Monster("Cat",12);
     }
