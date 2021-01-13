@@ -36,6 +36,13 @@ public class MonsterTest {
         assertTrue(firstMonster.equals(secondMonster));
     }
 
+    @Test
+    public void save_insertMonsterObjectIntoDatabase(){
+        Monster firstMonster  = setUpNewMonster();
+        firstMonster.save();
+        assertEquals(Monster.all().get(0).equals(firstMonster));
+    }
+
     public Monster setUpNewMonster(){
         return new Monster("Cat",12);
     }
