@@ -32,6 +32,12 @@ public class MonsterTest {
     }
 
     @Test
+    public void Monster_instantiatesWithHalfSleepLevel(){
+        Monster monster = setUpNewMonster();
+        assertEquals(monster.getSleepLevel(),(Monster.MAX_SLEEP_LEVEL/2));
+    }
+
+    @Test
     public void getName_instantiatesObjectWithAName_string(){
         Monster monster = setUpNewMonster();
         assertEquals("Cat",monster.getName());
