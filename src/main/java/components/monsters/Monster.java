@@ -21,10 +21,11 @@ public class Monster {
     public static final int MIN_ALL_LEVELS  = 0;
 
     public Monster(String name,int personId){
-        this.name      = name;
-        this.personId  = personId;
-        this.playLevel = MAX_PLAY_LEVEL/2;
-        this.foodLevel = MAX_FOOD_LEVEL/2;
+        this.name       = name;
+        this.personId   = personId;
+        this.playLevel  = MAX_PLAY_LEVEL/2;
+        this.foodLevel  = MAX_FOOD_LEVEL/2;
+        this.sleepLevel = MAX_SLEEP_LEVEL/2;
     }
 
     public int getId(){
@@ -45,6 +46,10 @@ public class Monster {
 
     public int getFoodLevel(){
         return this.foodLevel;
+    }
+
+    public int getSleepLevel(){
+        return this.sleepLevel;
     }
 
     public void save(){
