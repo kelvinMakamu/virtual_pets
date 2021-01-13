@@ -52,6 +52,10 @@ public class Monster {
         return this.sleepLevel;
     }
 
+    public boolean isAlive(){
+        return !(playLevel <= MIN_ALL_LEVELS || foodLevel <= MIN_ALL_LEVELS || sleepLevel <=MIN_ALL_LEVELS);
+    }
+
     public void save(){
         String query = "INSERT INTO monsters(name,personId) VALUES(:name,:personId)";
         try(Connection connection = Database.sql2o.open()){
