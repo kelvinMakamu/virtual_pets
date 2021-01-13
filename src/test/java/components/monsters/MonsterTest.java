@@ -113,6 +113,13 @@ public class MonsterTest {
         assertTrue(monster.getPlayLevel() > (Monster.MAX_PLAY_LEVEL/2));
     }
 
+    @Test
+    public void sleep_increasesMonsterSleepLevel(){
+        Monster monster = setUpNewMonster();
+        monster.sleep();
+        assertTrue(monster.getSleepLevel() > (Monster.MAX_SLEEP_LEVEL/2));
+    }
+
     public Monster setUpNewMonster(){
         return new Monster("Cat",12);
     }
