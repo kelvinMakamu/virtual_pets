@@ -60,6 +60,10 @@ public class Monster {
         this.playLevel++;
     }
 
+    public void sleep(){
+        this.sleepLevel++;
+    }
+
     public void save(){
         String query = "INSERT INTO monsters(name,personId) VALUES(:name,:personId)";
         try(Connection connection = Database.sql2o.open()){
