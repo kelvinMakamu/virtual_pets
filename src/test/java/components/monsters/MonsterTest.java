@@ -38,6 +38,12 @@ public class MonsterTest {
     }
 
     @Test
+    public void isAlive_confirmsIfMonsterIsAliveIfAllLevelsIsAboveMinimum_true(){
+        Monster monster = setUpNewMonster();
+        assertTrue(monster.isAlive());
+    }
+
+    @Test
     public void getName_instantiatesObjectWithAName_string(){
         Monster monster = setUpNewMonster();
         assertEquals("Cat",monster.getName());
