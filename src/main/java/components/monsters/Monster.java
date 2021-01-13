@@ -21,8 +21,9 @@ public class Monster {
     public static final int MIN_ALL_LEVELS  = 0;
 
     public Monster(String name,int personId){
-        this.name     = name;
-        this.personId = personId;
+        this.name      = name;
+        this.personId  = personId;
+        this.playLevel = MAX_PLAY_LEVEL/2;
     }
 
     public int getId(){
@@ -35,6 +36,10 @@ public class Monster {
 
     public int getPersonId(){
         return this.personId;
+    }
+
+    public int getPlayLevel(){
+        return this.playLevel;
     }
 
     public void save(){
