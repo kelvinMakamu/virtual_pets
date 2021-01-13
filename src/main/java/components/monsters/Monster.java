@@ -64,6 +64,10 @@ public class Monster {
         this.sleepLevel++;
     }
 
+    public void feed(){
+        this.foodLevel++;
+    }
+
     public void save(){
         String query = "INSERT INTO monsters(name,personId) VALUES(:name,:personId)";
         try(Connection connection = Database.sql2o.open()){
