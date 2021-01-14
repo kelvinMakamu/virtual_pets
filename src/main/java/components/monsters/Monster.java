@@ -68,6 +68,12 @@ public class Monster {
         this.foodLevel++;
     }
 
+    public void depleteLevels(){
+        this.playLevel--;
+        this.sleepLevel--;
+        this.foodLevel--;
+    }
+
     public void save(){
         String query = "INSERT INTO monsters(name,personId) VALUES(:name,:personId)";
         try(Connection connection = Database.sql2o.open()){
