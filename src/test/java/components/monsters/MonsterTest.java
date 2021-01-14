@@ -107,6 +107,15 @@ public class MonsterTest {
     }
 
     @Test
+    public void depleteLevels_reduceAllLevels(){
+        Monster testMonster = setUpNewMonster();
+        testMonster.depleteLevels();
+        assertEquals(testMonster.getFoodLevel(), (Monster.MAX_FOOD_LEVEL / 2) - 1);
+        assertEquals(testMonster.getSleepLevel(), (Monster.MAX_SLEEP_LEVEL / 2) - 1);
+        assertEquals(testMonster.getPlayLevel(), (Monster.MAX_PLAY_LEVEL / 2) - 1);
+    }
+
+    @Test
     public void play_increasesMonsterPlayLevel(){
         Monster monster = setUpNewMonster();
         monster.play();
