@@ -9,8 +9,7 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.util.Date;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class MonsterTest {
 
@@ -234,6 +233,29 @@ public class MonsterTest {
         Timestamp lastPlayed = Monster.findById(monster.getId()).getLastPlayed();
         Timestamp rightNow  = new Timestamp(new Date().getTime());
         assertEquals(DateFormat.getDateTimeInstance().format(lastPlayed),DateFormat.getDateTimeInstance().format(rightNow));
+    }
+
+    @Test
+    public void timer_executesDepleteLevelsMethod() {
+        Monster testMonster = setUpNewMonster();
+        int firstPlayLevel = testMonster.getPlayLevel();
+        testMonster.startTimer();
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException exception){}
+        int secondPlayLevel = testMonster.getPlayLevel();
+        assertTrue(firstPlayLevel > secondPlayLevel);
+    }
+
+    @Test
+    public void timer_haltsAfterMonsterDies() {
+        Monster testMonster = setUpNewMonster();
+        testMonster.startTimer();
+        try {
+            Thread.sleep(6000);
+        } catch (InterruptedException exception){}
+        assertFalse(testMonster.isAlive());
+        assertTrue(testMonster.getFoodLevel() >= 0);
     }
 
     public Monster setUpNewMonster(){
