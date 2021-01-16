@@ -65,6 +65,9 @@ public class Monster {
     }
 
     public void feed(){
+        if (this.foodLevel >= MAX_FOOD_LEVEL){
+            throw new UnsupportedOperationException("You cannot feed your monster anymore!");
+        }
         this.foodLevel++;
     }
 
