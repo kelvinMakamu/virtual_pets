@@ -82,6 +82,12 @@ public class Monster {
         if (this.playLevel >= MAX_PLAY_LEVEL){
             throw new UnsupportedOperationException("The monster cannot play anymore!");
         }
+        String query = "UPDATE monsters SET lastPlayed=now() WHERE id=:id";
+        try(Connection connection = Database.sql2o.open()){
+            connection.createQuery(query)
+                    .addParameter("id",this.id)
+                    .executeUpdate();
+        }
         this.playLevel++;
     }
 
@@ -101,6 +107,12 @@ public class Monster {
     public void feed(){
         if (this.foodLevel >= MAX_FOOD_LEVEL){
             throw new UnsupportedOperationException("You cannot feed your monster anymore!");
+        }
+        String query = "UPDATE monsters SET lastAte=now() WHERE id=:id";
+        try(Connection connection = Database.sql2o.open()){
+            connection.createQuery(query)
+                    .addParameter("id",this.id)
+                    .executeUpdate();
         }
         this.foodLevel++;
     }
