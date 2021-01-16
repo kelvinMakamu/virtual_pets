@@ -202,7 +202,7 @@ public class MonsterTest {
         monster.save();
         Timestamp birthday = Monster.findById(monster.getId()).getBirthday();
         Timestamp rightNow = new Timestamp(new Date().getTime());
-        assertEquals(birthday,rightNow);
+        assertEquals(birthday.getDay(),rightNow.getDay());
     }
 
     public Monster setUpNewMonster(){
