@@ -3,6 +3,7 @@ package components.monsters;
 import components.data.Database;
 import org.sql2o.Connection;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 
@@ -14,6 +15,11 @@ public class Monster {
     private int foodLevel;
     private int sleepLevel;
     private int playLevel;
+    // TIMESTAMPS
+    private Timestamp birthday;
+    private Timestamp lastSlept;
+    private Timestamp lastAte;
+    private Timestamp lastPlayed;
     // CONSTANTS
     public static final int MAX_FOOD_LEVEL  = 3;
     public static final int MAX_SLEEP_LEVEL = 8;
