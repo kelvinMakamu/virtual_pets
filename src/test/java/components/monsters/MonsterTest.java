@@ -216,6 +216,26 @@ public class MonsterTest {
         assertEquals(DateFormat.getDateTimeInstance().format(lastSlept),DateFormat.getDateTimeInstance().format(rightNow));
     }
 
+    @Test
+    public void feed_recordsLastAteTimeIntoDatabase(){
+        Monster monster = setUpNewMonster();
+        monster.save();
+        monster.feed();
+        Timestamp lastAte = Monster.findById(monster.getId()).getLastAte();
+        Timestamp rightNow  = new Timestamp(new Date().getTime());
+        assertEquals(DateFormat.getDateTimeInstance().format(lastAte),DateFormat.getDateTimeInstance().format(rightNow));
+    }
+
+    @Test
+    public void play_recordsLastPlayedTimeIntoDatabase(){
+        Monster monster = setUpNewMonster();
+        monster.save();
+        monster.play();
+        Timestamp lastPlayed = Monster.findById(monster.getId()).getLastPlayed();
+        Timestamp rightNow  = new Timestamp(new Date().getTime());
+        assertEquals(DateFormat.getDateTimeInstance().format(lastPlayed),DateFormat.getDateTimeInstance().format(rightNow));
+    }
+
     public Monster setUpNewMonster(){
         return new Monster("Cat",12);
     }
