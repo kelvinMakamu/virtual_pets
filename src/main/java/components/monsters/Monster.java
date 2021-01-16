@@ -61,6 +61,18 @@ public class Monster {
     public Timestamp getBirthday(){
         return this.birthday;
     }
+    
+    public Timestamp getLastSlept(){
+        return this.lastSlept;
+    }
+
+    public Timestamp getLastAte(){
+        return this.lastAte;
+    }
+    
+    public Timestamp getLastPlayed(){
+        return this.lastPlayed;
+    }
 
     public boolean isAlive(){
         return !(playLevel <= MIN_ALL_LEVELS || foodLevel <= MIN_ALL_LEVELS || sleepLevel <=MIN_ALL_LEVELS);
@@ -76,6 +88,12 @@ public class Monster {
     public void sleep(){
         if (this.sleepLevel >= MAX_SLEEP_LEVEL){
             throw new UnsupportedOperationException("The monster cannot sleep any longer!");
+        }
+        String query = "UPDATE monsters SET lastSlept=now() WHERE id=:id";
+        try(Connection connection = Database.sql2o.open()){
+            connection.createQuery(query)
+                    .addParameter("id",this.id)
+                    .executeUpdate();
         }
         this.sleepLevel++;
     }

@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import java.sql.Timestamp;
+import java.text.DateFormat;
 import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
@@ -203,6 +204,16 @@ public class MonsterTest {
         Timestamp birthday = Monster.findById(monster.getId()).getBirthday();
         Timestamp rightNow = new Timestamp(new Date().getTime());
         assertEquals(birthday.getDay(),rightNow.getDay());
+    }
+
+    @Test
+    public void sleep_recordsLastSleptTimeIntoDatabase(){
+        Monster monster = setUpNewMonster();
+        monster.save();
+        monster.sleep();
+        Timestamp lastSlept = Monster.findById(monster.getId()).getLastSlept();
+        Timestamp rightNow  = new Timestamp(new Date().getTime());
+        assertEquals(DateFormat.getDateTimeInstance().format(lastSlept),DateFormat.getDateTimeInstance().format(rightNow));
     }
 
     public Monster setUpNewMonster(){
