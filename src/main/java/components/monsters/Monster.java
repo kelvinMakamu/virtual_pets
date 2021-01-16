@@ -57,10 +57,16 @@ public class Monster {
     }
 
     public void play(){
+        if (this.playLevel >= MAX_PLAY_LEVEL){
+            throw new UnsupportedOperationException("The monster cannot play anymore!");
+        }
         this.playLevel++;
     }
 
     public void sleep(){
+        if (this.sleepLevel >= MAX_SLEEP_LEVEL){
+            throw new UnsupportedOperationException("The monster cannot sleep any longer!");
+        }
         this.sleepLevel++;
     }
 
