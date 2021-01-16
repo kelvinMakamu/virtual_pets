@@ -57,6 +57,10 @@ public class Monster {
     public int getSleepLevel(){
         return this.sleepLevel;
     }
+    
+    public Timestamp getBirthday(){
+        return this.birthday;
+    }
 
     public boolean isAlive(){
         return !(playLevel <= MIN_ALL_LEVELS || foodLevel <= MIN_ALL_LEVELS || sleepLevel <=MIN_ALL_LEVELS);
@@ -90,7 +94,7 @@ public class Monster {
     }
 
     public void save(){
-        String query = "INSERT INTO monsters(name,personId) VALUES(:name,:personId)";
+        String query = "INSERT INTO monsters(name,personId,birthday) VALUES(:name,:personId,now())";
         try(Connection connection = Database.sql2o.open()){
             this.id = (int)connection.createQuery(query,true)
                         .addParameter("name",this.name)
